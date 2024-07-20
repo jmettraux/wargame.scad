@@ -8,6 +8,10 @@ $fn = 12;
 
 itmm = 25.4; // inch to mm
 
+  // 3, 6, or 12 inches stick?
+  //
+length = 6;
+
 l = 12; // 12 inches
 width = 6.6;
 height = 5.6;
@@ -21,97 +25,116 @@ text_font_size = 4.0;
 text_margin_right = 0.5;
 text_margin_bottom = 1.4;
 
-union() {
+translate([ 0, - length * itmm / 2, 0 ]) difference() {
 
-  difference() {
+  union() {
 
-    cube([ width, l * itmm, height ], false);
+    difference() {
 
-    //translate([ width - text_height, 0, 0.42 ])
-    //  rotate([ 90, 0, 90 ])
-    //    linear_extrude(text_height * 1.1)
-    //      text(
-    //        "<>3 ||| i6 li8 m10 lm12 !12 /// jav6 slmbx12 bx18",
-    //        size=font_size, halign="left");
+      cube([ width, l * itmm, height ], false);
 
-    // right side
+      //translate([ width - text_height, 0, 0.42 ])
+      //  rotate([ 90, 0, 90 ])
+      //    linear_extrude(text_height * 1.1)
+      //      text(
+      //        "<>3 ||| i6 li8 m10 lm12 !12 /// jav6 slmbx12 bx18",
+      //        size=font_size, halign="left");
 
-    translate([
-      width - text_height, 3 * itmm + text_margin_right, text_margin_bottom
-    ])
-      rotate([ 90, 0, 90 ])
-        linear_extrude(text_height * 1.1)
-          //text("↔ |", size=text_font_size, halign="right");
-          text("< > |", size=text_font_size, halign="right");
-    translate([
-      width - text_height, 6 * itmm + text_margin_right, text_margin_bottom
-    ])
-      rotate([ 90, 0, 90 ])
-        linear_extrude(text_height * 1.1)
-          //text("inf → jav |", size=text_font_size, halign="right");
-          text("inf > jav |", size=text_font_size, halign="right");
-    translate([
-      width - text_height, 8 * itmm + text_margin_right, text_margin_bottom
-    ])
-      rotate([ 90, 0, 90 ])
-        linear_extrude(text_height * 1.1)
-          //text("linf → |", size=text_font_size, halign="right");
-          text("linf > |", size=text_font_size, halign="right");
-    translate([
-      width - text_height, 10 * itmm + text_margin_right, text_margin_bottom
-    ])
-      rotate([ 90, 0, 90 ])
-        linear_extrude(text_height * 1.1)
-          //text("cav → |", size=text_font_size, halign="right");
-          text("cav > |", size=text_font_size, halign="right");
-    translate([
-      width - text_height, 12 * itmm + text_margin_right, text_margin_bottom
-    ])
-      rotate([ 90, 0, 90 ])
-        linear_extrude(text_height * 1.1)
-          //text("lcav → msbx |", size=text_font_size, halign="right");
-          //text("lcav → slmbx ", size=text_font_size, halign="right");
-          text("lcav > slmbx ", size=text_font_size, halign="right");
+      // right side
 
-    // left (other) side
+      translate([
+        width - text_height, 3 * itmm + text_margin_right, text_margin_bottom
+      ])
+        rotate([ 90, 0, 90 ])
+          linear_extrude(text_height * 1.1)
+            //text("↔ |", size=text_font_size, halign="right");
+            if (length == 3)
+              text("< >  ", size=text_font_size, halign="right");
+            else
+              text("< > |", size=text_font_size, halign="right");
+      translate([
+        width - text_height, 6 * itmm + text_margin_right, text_margin_bottom
+      ])
+        rotate([ 90, 0, 90 ])
+          linear_extrude(text_height * 1.1)
+            //text("inf → jav |", size=text_font_size, halign="right");
+            if (length == 6)
+              text("inf > jav  ", size=text_font_size, halign="right");
+            else
+              text("inf > jav |", size=text_font_size, halign="right");
+      translate([
+        width - text_height, 8 * itmm + text_margin_right, text_margin_bottom
+      ])
+        rotate([ 90, 0, 90 ])
+          linear_extrude(text_height * 1.1)
+            //text("linf → |", size=text_font_size, halign="right");
+            text("linf > |", size=text_font_size, halign="right");
+      translate([
+        width - text_height, 10 * itmm + text_margin_right, text_margin_bottom
+      ])
+        rotate([ 90, 0, 90 ])
+          linear_extrude(text_height * 1.1)
+            //text("cav → |", size=text_font_size, halign="right");
+            text("cav > |", size=text_font_size, halign="right");
+      translate([
+        width - text_height, 12 * itmm + text_margin_right, text_margin_bottom
+      ])
+        rotate([ 90, 0, 90 ])
+          linear_extrude(text_height * 1.1)
+            //text("lcav → msbx |", size=text_font_size, halign="right");
+            //text("lcav → slmbx ", size=text_font_size, halign="right");
+            text("lcav > slmbx ", size=text_font_size, halign="right");
 
-    translate([
-      //width - text_height, 6 * itmm + text_margin_right, text_margin_bottom
-      text_height * 0.9, 6 * itmm + text_margin_right, text_margin_bottom
-    ])
-      rotate([ 90, 0, -90 ])
-        linear_extrude(text_height * 1.1)
-          //text("inf → jav |", size=text_font_size, halign="right");
-          text("| bx <", size=text_font_size, halign="left");
-  }
+      // left (other) side
 
-  difference() {
+      translate([
+        //width - text_height, 6 * itmm + text_margin_right, text_margin_bottom
+        text_height * 0.9, 6 * itmm + text_margin_right, text_margin_bottom
+      ])
+        rotate([ 90, 0, -90 ])
+          linear_extrude(text_height * 1.1)
+            //text("inf → jav |", size=text_font_size, halign="right");
+            if (length == 6)
+              text("  18 bx <", size=text_font_size, halign="left");
+            else
+              text("| 18 bx <", size=text_font_size, halign="left");
+    }
 
-    for (i = [ 0 : 2 : l - 1 ]) {
+    difference() {
 
-      color("blue")
-        translate([ 0, i * itmm, height ])
-          cube([ width, itmm, color_layer_height ], false);
-    };
+      for (i = [ 0 : 2 : l - 1 ]) {
 
-    // 3 mark
+        color("blue")
+          translate([ 0, i * itmm, height ])
+            cube([ width, itmm, color_layer_height ], false);
+      };
 
-    translate([ width * 0.9, 3 * itmm - mark_margin_right, height ])
-      rotate([ 0, 0, 90 ])
-      linear_extrude(text_height * 1.1)
-        text("3", size=mark_font_size, halign="right");
+      // 3 mark
 
-  };
-
-  // 6, 8, 10, and 12 marks
-
-  for (i = [ 6, 8, 10, 12 ]) {
-
-    color("blue")
-      translate([ width * 0.9, i * itmm - mark_margin_right, height ])
+      translate([ width * 0.9, 3 * itmm - mark_margin_right, height ])
         rotate([ 0, 0, 90 ])
         linear_extrude(text_height * 1.1)
-          text(str(i), size=mark_font_size, halign="right");
+          text("3", size=mark_font_size, halign="right");
+
+    };
+
+    // 6, 8, 10, and 12 marks
+
+    for (i = [ 6, 8, 10, 12 ]) {
+
+      color("blue")
+        translate([ width * 0.9, i * itmm - mark_margin_right, height ])
+          rotate([ 0, 0, 90 ])
+          linear_extrude(text_height * 1.1)
+            text(str(i), size=mark_font_size, halign="right");
+    };
   };
+
+  if (length == 6 || length == 3) {
+
+    translate([ - width / 2, length * itmm - 0.05, - height / 2 ])
+      cube([ width * 2, l * itmm, height * 2 ], false);
+  }
 };
+
 
