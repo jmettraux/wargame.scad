@@ -10,3 +10,5 @@ _stl/*.stl
 .chat.md
 .openai.*
 
+tmp/
+
