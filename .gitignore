@@ -1,0 +1,12 @@
+
+.vim*
+
+_stl/*.stl
+
+*.core
+
+.todo.md
+
+.chat.md
+.openai.*
+
