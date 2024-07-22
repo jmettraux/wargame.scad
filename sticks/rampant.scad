@@ -10,7 +10,7 @@ itmm = 25.4; // inch to mm
 
   // 3, 6, or 12 inches stick?
   //
-length = 6;
+length = 12;
 
 l = 12; // 12 inches
 width = 6.6;
@@ -83,7 +83,8 @@ translate([ 0, - length * itmm / 2, 0 ]) difference() {
           linear_extrude(text_height * 1.1)
             //text("lcav → msbx |", size=text_font_size, halign="right");
             //text("lcav → slmbx ", size=text_font_size, halign="right");
-            text("lcav > slmbx ", size=text_font_size, halign="right");
+            //text("lcav > slmbx ", size=text_font_size, halign="right");
+            text("lcav > sl mbx ", size=text_font_size, halign="right");
 
       // left (other) side
 
@@ -98,6 +99,15 @@ translate([ 0, - length * itmm / 2, 0 ]) difference() {
               text("  18 bx <", size=text_font_size, halign="left");
             else
               text("| 18 bx <", size=text_font_size, halign="left");
+
+      if (length == 12) {
+        translate([
+          text_height * 0.9, 12 * itmm + text_margin_right, text_margin_bottom
+        ])
+          rotate([ 90, 0, -90 ])
+            linear_extrude(text_height * 1.1)
+              text("  ldship <", size=text_font_size, halign="left");
+      }
     }
 
     difference() {
