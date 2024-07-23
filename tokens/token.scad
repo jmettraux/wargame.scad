@@ -3,6 +3,9 @@
 // token.scad
 //
 
+// one side red, for "battered"
+// one side black, for "has activated" / "just rallied" / "has wildly charded"
+
 // unit is mm
 
 inch = 25.4;
