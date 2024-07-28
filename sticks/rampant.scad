@@ -8,9 +8,9 @@ $fn = 12;
 
 itmm = 25.4; // inch to mm
 
-  // 3, 6, or 12 inches stick?
+  // 3, 6, 8, 10, or 12 inches stick?
   //
-length = 12;
+length = 10;
 
 l = 12; // 12 inches
 width = 6.6;
@@ -68,14 +68,20 @@ translate([ 0, - length * itmm / 2, 0 ]) difference() {
         rotate([ 90, 0, 90 ])
           linear_extrude(text_height * 1.1)
             //text("linf → |", size=text_font_size, halign="right");
-            text("linf > |", size=text_font_size, halign="right");
+            if (length == 8)
+              text("linf >  ", size=text_font_size, halign="right");
+            else
+              text("linf > |", size=text_font_size, halign="right");
       translate([
         width - text_height, 10 * itmm + text_margin_right, text_margin_bottom
       ])
         rotate([ 90, 0, 90 ])
           linear_extrude(text_height * 1.1)
             //text("cav → |", size=text_font_size, halign="right");
-            text("cav > |", size=text_font_size, halign="right");
+            if (length == 10)
+              text("cav >  ", size=text_font_size, halign="right");
+            else
+              text("cav > |", size=text_font_size, halign="right");
       translate([
         width - text_height, 12 * itmm + text_margin_right, text_margin_bottom
       ])
@@ -140,7 +146,7 @@ translate([ 0, - length * itmm / 2, 0 ]) difference() {
     };
   };
 
-  if (length == 6 || length == 3) {
+  if (length < 12) {
 
     translate([ - width / 2, length * itmm - 0.05, - height / 2 ])
       cube([ width * 2, l * itmm, height * 2 ], false);
