@@ -2,16 +2,23 @@
 //
 // rampant.scad
 
-$fn = 12;
+// Copyright (C) 2024 John Mettraux jmettraux@gmail.com
+//
+// This work is licensed under the
+// Creative Commons Attribution 4.0 International License.
+//
+// https://creativecommons.org/licenses/by/4.0/
 
-// unit is mm
-
-itmm = 25.4; // inch to mm
 
   // 3, 6, 8, 10, or 12 inches stick?
   //
-length = 10;
+length = 12;
 
+
+// unit is mm
+
+$fn = 12;
+itmm = 25.4; // inch to mm
 l = 12; // 12 inches
 width = 6.6;
 height = 5.6;
@@ -24,6 +31,7 @@ mark_margin_right = 1.0;
 text_font_size = 4.0;
 text_margin_right = 0.5;
 text_margin_bottom = 1.4;
+
 
 translate([ 0, - length * itmm / 2, 0 ]) difference() {
 
@@ -152,5 +160,4 @@ translate([ 0, - length * itmm / 2, 0 ]) difference() {
       cube([ width * 2, l * itmm, height * 2 ], false);
   }
 };
-
 
