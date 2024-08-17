@@ -36,8 +36,9 @@ height = 3.3;
 magnet_height = 1.0 + 0.3; // +0.2 resin / +0.3 pla
 magnet_radius = 1.5 + 0.29; // +0.1 resin / +0.29 pla
 mz = magnet_height / 2 - 0.1;
-wid = width * 0.5 - magnet_radius * 1.7;
-lend = length * 0.5 - magnet_radius * 1.7;
+dd = 2.1;
+wid = width * 0.5 - magnet_radius * dd;
+lend = length * 0.5 - magnet_radius * dd;
 
 points = [
   [     0,      0, 0 ],
