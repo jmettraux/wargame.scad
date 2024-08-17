@@ -71,6 +71,13 @@ difference() {
     translate([ -wid, 0, mz ]) cylinder(magnet_height, r=mr, center=true);
     translate([ 0, lend, mz ]) cylinder(magnet_height, r=mr, center=true);
     translate([ 0, -lend, mz ]) cylinder(magnet_height, r=mr, center=true);
+
+    if (width > 25 || length > 25) {
+      translate([ wid, lend, mz ]) cylinder(magnet_height, r=mr, center=true);
+      translate([ wid, -lend, mz ]) cylinder(magnet_height, r=mr, center=true);
+      translate([ -wid, lend, mz ]) cylinder(magnet_height, r=mr, center=true);
+      translate([ -wid, -lend, mz ]) cylinder(magnet_height, r=mr, center=true);
+    }
   }
 }
 
