@@ -22,8 +22,10 @@ $fn=60;
 // 25mm x 50mm
 // 40mm x 40mm
 
-width = 20;
-length = 20;
+//width = 20;
+//length = 20;
+width = 25;
+length = 50;
 
 ww = 1; // vertical delta betwen base width and top width
 ll = 1; // vertical delta betwen base length and top length
@@ -31,10 +33,11 @@ tw = width - 2 * ww;
 tl = length - 2 * ll;
 height = 3.3;
 
-r2 = (width + length) * 0.5 / 2.8;
 magnet_height = 1.0 + 0.3; // +0.2 resin / +0.3 pla
 magnet_radius = 1.5 + 0.29; // +0.1 resin / +0.29 pla
 mz = magnet_height / 2 - 0.1;
+wid = width * 0.5 - magnet_radius * 1.7;
+lend = length * 0.5 - magnet_radius * 1.7;
 
 points = [
   [     0,      0, 0 ],
@@ -58,17 +61,16 @@ difference() {
   translate([ -width * 0.5, -length * 0.5, 0]) polyhedron(points, faces);
 
   #union() {
-  translate([ 0, 0, mz ])
-    cylinder(magnet_height, r=magnet_radius, center=true);
 
-  rotate([ 0, 0, 0 ]) translate([ r2, 0, mz ])
-    cylinder(magnet_height, r=magnet_radius, center=true);
-  rotate([ 0, 0, 90 ]) translate([ r2, 0, mz ])
-    cylinder(magnet_height, r=magnet_radius, center=true);
-  rotate([ 0, 0, 180 ]) translate([ r2, 0, mz ])
-    cylinder(magnet_height, r=magnet_radius, center=true);
-  rotate([ 0, 0, 270 ]) translate([ r2, 0, mz ])
-    cylinder(magnet_height, r=magnet_radius, center=true);
+    mr = magnet_radius;
+
+    translate([ 0, 0, mz ]) cylinder(magnet_height, r=mr, center=true);
+      // central magnet hole
+
+    translate([ wid, 0, mz ]) cylinder(magnet_height, r=mr, center=true);
+    translate([ -wid, 0, mz ]) cylinder(magnet_height, r=mr, center=true);
+    translate([ 0, lend, mz ]) cylinder(magnet_height, r=mr, center=true);
+    translate([ 0, -lend, mz ]) cylinder(magnet_height, r=mr, center=true);
   }
 }
 
