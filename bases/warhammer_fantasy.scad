@@ -1,6 +1,6 @@
 
 //
-// warhammer_fantasy.scad
+// bases/warhammer_fantasy.scad
 
 // Copyright (C) 2024 John Mettraux jmettraux@gmail.com
 //
