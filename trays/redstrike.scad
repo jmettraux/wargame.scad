@@ -25,6 +25,19 @@ wt2 = wt * 2;
 tray_height = 17 + 0.4;
 th = tray_height;
 
+lens_diameter = 18;
+lens_height = 0.8;
+
+//module lens(depth) {
+//  difference() {
+//    sphere(d=lens_diameter, center=true, $fn=60);
+//    translate([ 0, lens_height, 0 ])
+//      cube(
+//        [ lens_diameter * 1.0, lens_diameter, lens_diameter * 1.0 ],
+//        center=true);
+//  }
+//}
+//lens(length_height);
 
 module column() {
 
@@ -44,7 +57,7 @@ module column() {
   translate([ dw, 0, -sdz ])
     cube([ wt, box_width, side_height ], center=true);
 
-  translate([ 0, -dy, 0 ])
+  #translate([ 0, -dy, 0 ])
     cube([ counter_side + wt2, wt, tray_height ], center=true);
   translate([ 0, dy, 0 ])
     cube([ counter_side + wt2, wt, tray_height ], center=true);
@@ -55,7 +68,7 @@ module column() {
 
     translate([ 0, bw / 2 - i * c * 2 - c, -th / 2 - wt / 2 + c * 0.74 ])
       rotate([ 45, 0, 0 ])
-        cube([ counter_side + wt2, ct, ct ], center=true);
+        cube([ counter_side + wt, ct, ct ], center=true);
   }
 }
 
