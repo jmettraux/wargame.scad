@@ -36,10 +36,13 @@ module column() {
   translate([ 0, 0, -tray_height / 2 - wt / 2 ])
     cube([ counter_side + wt2, box_width, wt ], center=true);
 
-  translate([ -dw, 0, 0 ])
-    cube([ wt, box_width, tray_height ], center=true);
-  translate([ dw, 0, 0 ])
-    cube([ wt, box_width, tray_height ], center=true);
+  side_height = tray_height * 0.6;
+  sdz = (tray_height - side_height) / 2;
+
+  translate([ -dw, 0, -sdz ])
+    cube([ wt, box_width, side_height ], center=true);
+  translate([ dw, 0, -sdz ])
+    cube([ wt, box_width, side_height ], center=true);
 
   translate([ 0, -dy, 0 ])
     cube([ counter_side + wt2, wt, tray_height ], center=true);
