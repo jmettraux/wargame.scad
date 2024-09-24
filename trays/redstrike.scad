@@ -64,6 +64,8 @@ module column() {
     cube([ counter_side + wt2, wt, tray_height ], center=true);
   translate([ 0, dy, 0 ])
     cube([ counter_side + wt2, wt, tray_height ], center=true);
+  translate([ 0, 0, 0 ])
+    cube([ counter_side + wt2, wt, tray_height ], center=true);
 
   //echo("slots", (bw - wt2) / (c * 2) + 1);
 
@@ -74,7 +76,7 @@ module column() {
         cube([ counter_side + wt, ct, ct ], center=true);
   }
 }
-column();
+//column();
 
 
 module lid() {
@@ -98,5 +100,5 @@ module lid() {
   translate([ 0, 0, lid_height / 2 - wt / 2 ])
     cube([ lid_width, lid_length, wt ], center=true);
 }
-%translate([ 0, 0, 3 ]) lid();
+translate([ 0, 0, 3 ]) lid();
 
