@@ -6,8 +6,10 @@
 
 // w250 x d210 x h220 (Prusa MK4 bed dimensions)
 
+o2 = 0.2;
+
 box_width = 215;   // 22cm actually
-box_length = 295;  // 30cm actually
+box_length = 295;  // 30cm actually // not used...
 bw = box_width;
 bl = box_length;
 //box_height = 40;   // "remaining height"
@@ -39,6 +41,7 @@ lens_height = 0.8;
 //}
 //lens(length_height);
 
+
 module column() {
 
   dw = counter_side / 2 + wt / 2;
@@ -57,7 +60,7 @@ module column() {
   translate([ dw, 0, -sdz ])
     cube([ wt, box_width, side_height ], center=true);
 
-  #translate([ 0, -dy, 0 ])
+  translate([ 0, -dy, 0 ])
     cube([ counter_side + wt2, wt, tray_height ], center=true);
   translate([ 0, dy, 0 ])
     cube([ counter_side + wt2, wt, tray_height ], center=true);
@@ -71,6 +74,29 @@ module column() {
         cube([ counter_side + wt, ct, ct ], center=true);
   }
 }
-
 column();
+
+
+module lid() {
+
+  lid_length = bw + 2 * wt + 2 * o2;
+  lid_width = counter_side + 2 * wt2 + 2 * o2;
+  lid_height = tray_height * 0.8;
+
+  dx = counter_side / 2 + wt / 2 + wt + o2;
+
+  translate([ dx, 0, 0 ])
+    cube([ wt, lid_length, lid_height ], center=true);
+  translate([ -dx, 0, 0 ])
+    cube([ wt, lid_length, lid_height ], center=true);
+
+  translate([ 0, -lid_length / 2 + wt / 2, 0 ])
+    cube([ lid_width, wt, lid_height ], center=true);
+  translate([ 0, lid_length / 2 - wt / 2, 0 ])
+    cube([ lid_width, wt, lid_height ], center=true);
+
+  translate([ 0, 0, lid_height / 2 - wt / 2 ])
+    cube([ lid_width, lid_length, wt ], center=true);
+}
+%translate([ 0, 0, 3 ]) lid();
 
