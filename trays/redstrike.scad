@@ -81,11 +81,11 @@ module column() {
 
 module lid() {
 
-  lid_length = bw + 2 * wt + 1.5 * o2;
-  lid_width = counter_side + 2 * wt2 + 2 * o2;
+  lid_length = bw + 2 * wt + 1 * o2;
+  lid_width = counter_side + 2 * wt2 + 1 * o2;
   lid_height = tray_height * 0.63;
 
-  dx = counter_side / 2 + wt / 2 + wt + o2;
+  dx = lid_width / 2 - wt / 2;
 
   translate([ dx, 0, 0 ])
     cube([ wt, lid_length, lid_height ], center=true);
