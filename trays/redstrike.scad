@@ -76,12 +76,12 @@ module column() {
         cube([ counter_side + wt, ct, ct ], center=true);
   }
 }
-column();
+//column();
 
 
 module lid() {
 
-  lid_length = bw + 2 * wt + 2 * o2;
+  lid_length = bw + 2 * wt + 1.5 * o2;
   lid_width = counter_side + 2 * wt2 + 2 * o2;
   lid_height = tray_height * 0.63;
 
@@ -100,6 +100,6 @@ module lid() {
   translate([ 0, 0, lid_height / 2 - wt / 2 ])
     cube([ lid_width, lid_length, wt ], center=true);
 }
-%translate([ 0, 0, 3 ]) lid();
-//%translate([ 0, 0, -4 ]) mirror([ 0, 0, 1 ]) lid();
+//translate([ 0, 0, 3 ]) lid();
+translate([ 0, 0, -4 ]) mirror([ 0, 0, 1 ]) lid();
 
