@@ -99,6 +99,8 @@ module lid() {
 
   translate([ 0, 0, lid_height / 2 - wt / 2 ])
     cube([ lid_width, lid_length, wt ], center=true);
+
+  //echo("count", box_length / lid_width);
 }
 //translate([ 0, 0, 3 ]) lid();
 translate([ 0, 0, -4 ]) mirror([ 0, 0, 1 ]) lid();
