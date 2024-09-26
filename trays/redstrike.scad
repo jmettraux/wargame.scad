@@ -22,6 +22,7 @@ ct = counter_thickness;
 wall_thickness = 1.1;
 wt = wall_thickness;
 wt2 = wt * 2;
+wtt = wt * 1.6;
 
 //tray_height = counter_side;
 tray_height = 17 + 0.4;
@@ -45,7 +46,7 @@ lens_height = 0.8;
 module column() {
 
   dw = counter_side / 2 + wt / 2;
-  dy = box_width / 2 - wt / 2;
+  dy = box_width / 2 - wtt / 2;
 
   c = sqrt(ct / 2);
 
@@ -61,11 +62,11 @@ module column() {
     cube([ wt, box_width, side_height ], center=true);
 
   translate([ 0, -dy, 0 ])
-    cube([ counter_side + wt2, wt, tray_height ], center=true);
+    cube([ counter_side + wt2, wtt, tray_height ], center=true);
   translate([ 0, dy, 0 ])
-    cube([ counter_side + wt2, wt, tray_height ], center=true);
+    cube([ counter_side + wt2, wtt, tray_height ], center=true);
   translate([ 0, 0, 0 ])
-    cube([ counter_side + wt2, wt, tray_height - 5 * o2 ], center=true);
+    cube([ counter_side + wt2, wtt, tray_height - 5 * o2 ], center=true);
 
   //echo("slots", (bw - wt2) / (c * 2) + 1);
 
@@ -76,7 +77,7 @@ module column() {
         cube([ counter_side + wt, ct, ct ], center=true);
   }
 }
-//column();
+column();
 
 
 module lid() {
@@ -103,5 +104,5 @@ module lid() {
   //echo("count", box_length / lid_width);
 }
 //translate([ 0, 0, 3 ]) lid();
-translate([ 0, 0, -4 ]) mirror([ 0, 0, 1 ]) lid();
+//translate([ 0, 0, -4 ]) mirror([ 0, 0, 1 ]) lid();
 
