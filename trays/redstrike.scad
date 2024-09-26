@@ -22,7 +22,7 @@ ct = counter_thickness;
 wall_thickness = 1.1;
 wt = wall_thickness;
 wt2 = wt * 2;
-wtt = wt * 1.6;
+wtt = 1.8;
 
 //tray_height = counter_side;
 tray_height = 17 + 0.4;
