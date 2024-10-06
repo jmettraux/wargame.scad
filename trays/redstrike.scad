@@ -2,6 +2,13 @@
 //
 // trays/redstrike.scad
 
+// Copyright (C) 2024 John Mettraux jmettraux@gmail.com
+//
+// This work is licensed under the
+// Creative Commons Attribution 4.0 International License.
+//
+// https://creativecommons.org/licenses/by/4.0/
+
 // unit is mm
 
 // w250 x d210 x h220 (Prusa MK4 bed dimensions)
@@ -31,19 +38,8 @@ th = tray_height;
 lens_diameter = 18;
 lens_height = 0.8;
 
-//module lens(depth) {
-//  difference() {
-//    sphere(d=lens_diameter, center=true, $fn=60);
-//    translate([ 0, lens_height, 0 ])
-//      cube(
-//        [ lens_diameter * 1.0, lens_diameter, lens_diameter * 1.0 ],
-//        center=true);
-//  }
-//}
-//lens(length_height);
 
-
-module column() {
+module tray() {
 
   dw = counter_side / 2 + wt / 2;
   dy = box_width / 2 - wtt / 2;
@@ -77,7 +73,6 @@ module column() {
         cube([ counter_side + wt, ct, ct ], center=true);
   }
 }
-column();
 
 
 module lid() {
@@ -103,6 +98,9 @@ module lid() {
 
   //echo("count", box_length / lid_width);
 }
-//translate([ 0, 0, 3 ]) lid();
-//translate([ 0, 0, -4 ]) mirror([ 0, 0, 1 ]) lid();
+//translate([ 0, 0, 20 ]) mirror([ 1, 0, 0 ]) lid();
+
+
+tray();
+translate([ 30, 0, 0 ]) lid();
 
