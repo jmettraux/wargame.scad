@@ -35,11 +35,13 @@ difference() {
 
 module magnet_holder() {
   difference() {
-    cylinder(h = height, r = magnet_radius + 0.4, center = true);
-    #translate([ 0, 0, -height / 2 ])
-      cylinder(h = magnet_height, r = magnet_radius, center = true);
+    cylinder(h = height, r = magnet_radius + 0.8, center = true);
+    translate([ 0, 0, - height / 2 + magnet_height / 2 - 0.1 ])
+      cylinder(h = magnet_height + 0.1, r = magnet_radius, center = true);
   }
 }
 
-translate([ 0, 0, 0 ]) magnet_holder();
+translate([ -10, 0, 0 ]) magnet_holder();
+translate([   0, 0, 0 ]) magnet_holder();
+translate([  10, 0, 0 ]) magnet_holder();
 
